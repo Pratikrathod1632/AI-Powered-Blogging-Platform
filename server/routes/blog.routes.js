@@ -1,5 +1,5 @@
 import express from 'express'
-import { addBlog, getAllBlogs, getBlogById, togglePublish } from '../controllers/blog.controllers.js';
+import { addBlog, addComment, getAllBlogs, getBlogById, getBlogComment, togglePublish } from '../controllers/blog.controllers.js';
 import upload from '../middlewares/multer.js';
 import auth from '../middlewares/auth.js';
 
@@ -11,6 +11,10 @@ blogRouter.get('/:blogId',getBlogById)
 blogRouter.post('/delete',auth,getBlogById) //auth is used because only admin can delete this blog
 
 blogRouter.post('/toggle-publish',auth,togglePublish) //switch to publish and unpublish
+
+//comments section
+blogRouter.post('/add-comment',addComment)
+blogRouter.post('/comment',getBlogComment)
 
 
 export default blogRouter;
