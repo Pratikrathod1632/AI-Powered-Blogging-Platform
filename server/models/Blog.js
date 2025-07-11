@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 const blogSchema=new mongoose.Schema({
-    title :{type : String ,reqired :true},
+    title :{type : String ,required :true},
     subTitle :{type : String },
-    description :{type : String ,reqired :true },
-    category :{type : String ,reqired :true },
-    image :{type : String ,reqired :true },
-    isPublished :{type : Boolean ,reqired :true },
+    description :{type : String ,required :true },
+    category :{type : String ,required :true },
+    image :{type : String ,required :true },
+    isPublished :{type : Boolean ,required :true },
 },{timestamps: true});
 
 const Blog=mongoose.model('blog', blogSchema)

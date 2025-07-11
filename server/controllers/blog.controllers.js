@@ -6,12 +6,15 @@ import Comment from '../models/Comment.js';
 export const addBlog= async (req,res) => {
 
     try {
+        
         const {title, subTitle, description, category, isPublished}=JSON.parse(req.body.blog)
 
         const imageFile=req.file;
 
+         
+
         //check if all fields are present
-        if(!title || !subTitle || !description || !category || !isPublished){
+        if(!title || !subTitle || !description || !category || isPublished === undefined){
             return res.json({success:false, message: "Missing required fields"})
         }
 
@@ -141,8 +144,8 @@ export const addComment = async (req,res) => {
 export const getBlogComment = async (req,res) => {
 
     try {
-        const {blogTd} = req.body
-        const comments = await Comment.find({blog : blogTd, isApproved: true}).sort({createdAt: -1});
+        const {blogId} = req.body
+        const comments = await Comment.find({blog : blogId, isApproved: true}).sort({createdAt: -1});
 
         res.json({success:true, comments})
         
