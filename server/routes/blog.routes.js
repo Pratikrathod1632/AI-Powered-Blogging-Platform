@@ -1,5 +1,5 @@
 import express from 'express'
-import { addBlog, addComment, deleteBlogById, getAllBlogs, getBlogById, getBlogComment, togglePublish } from '../controllers/blog.controllers.js';
+import { addBlog, addComment, deleteBlogById, generateContent, getAllBlogs, getBlogById, getBlogComment, togglePublish } from '../controllers/blog.controllers.js';
 import upload from '../middlewares/multer.js';
 import auth from '../middlewares/auth.js';
 
@@ -15,6 +15,10 @@ blogRouter.post('/toggle-publish',auth,togglePublish) //switch to publish and un
 //comments section
 blogRouter.post('/add-comment',addComment)
 blogRouter.post('/comment',getBlogComment)
+
+// Gemini AI for AI Description
+blogRouter.post('/generate',auth, generateContent)
+
 
 
 export default blogRouter;
